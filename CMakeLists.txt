@@ -28,13 +28,13 @@ cable_configure_toolchain(DEFAULT cxx17)
 set(HUNTER_CONFIGURATION_TYPES Release CACHE STRING "Build type of Hunter packages")
 set(HUNTER_JOBS_NUMBER 6 CACHE STRING "Number of parallel builds used by Hunter")
 HunterGate(
-    URL "https://github.com/cpp-pm/hunter/archive/v0.23.299.tar.gz"
-    SHA1 "3d215b4bfac80824778fe9a93510e5f651d79e3a"
+    URL "https://github.com/cpp-pm/hunter/archive/v0.23.304.tar.gz"
+    SHA1 "cae9026e69d7d8333897663688a11f4232fb8826"
     LOCAL
 )
 
 project(nsfminer)
-set(PROJECT_VERSION 1.3.13) # Update version
+set(PROJECT_VERSION 1.3.14) # Update version
 
 cable_set_build_type(DEFAULT Release CONFIGURATION_TYPES Release RelWithDebInfo)
 
@@ -69,9 +69,6 @@ find_package(Boost CONFIG REQUIRED COMPONENTS system filesystem thread program_o
 hunter_add_package(jsoncpp)
 find_package(jsoncpp CONFIG REQUIRED)
 
-hunter_add_package(ethash)
-find_package(ethash CONFIG REQUIRED)
-
 configureProject()
 
 message("----------------------------------------------------------------------------")
@@ -97,6 +94,7 @@ add_subdirectory(libdev)
 add_subdirectory(libeth)
 add_subdirectory(libhwmon)
 add_subdirectory(libpool)
+add_subdirectory(ethash)
 
 if (ETHASHCL)
     add_subdirectory(libcl)
